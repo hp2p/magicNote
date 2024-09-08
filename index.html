@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iComp</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="load_story()">
+   <div class="tab-container">
+    <div class="tab">
+      <button class="tablinks" onclick="openTab(event, 'NewWordTab')" id="defaultOpen">New Word</button>
+      <button class="tablinks" onclick="openTab(event, 'StoryTab')">Story</button>
+    </div>
+  </div>
+
+  <div id="NewWordTab" class="tabcontent">
+    <div class="chat-input">
+      <input type="text" id="new-word" placeholder="New word...">
+      <button id="new-word-button" onclick="callAPI('new-word')">Get</button>
+    </div>
+    <div class="chat-window" id="learn-window">
+    </div>
+    <script>
+      var input = document.getElementById("new-word");
+      input.addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          document.getElementById("new-word-button").click();
+        }
+      });
+    </script>
+  </div>
+
+  <div id="StoryTab" class="tabcontent">
+    <div class="story-window" id="story-window"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
